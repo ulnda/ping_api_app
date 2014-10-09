@@ -20,6 +20,6 @@ ActiveRecord::Schema.define(version: 20141009075039) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["phone"], name: "index_users_on_phone"
+  add_index "users", ["phone"], name: "index_users_on_phone", unique: true
 
 end

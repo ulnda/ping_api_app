@@ -40,4 +40,10 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+    # Include Capybara DSL for request specs
+  config.include Capybara::DSL, :type => :request
+
+  # Include FactoryGirl methods to make tests easier
+  config.include FactoryGirl::Syntax::Methods
 end
