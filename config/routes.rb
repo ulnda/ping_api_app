@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+
+  namespace :api do
+
+    namespace :v1 do
+
+      post 'signup', to: 'sessions#new'
+      post 'signin', to: 'sessions#create'
+
+      post 'users/contacts', to: 'users#contacts'
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

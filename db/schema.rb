@@ -11,15 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141009075039) do
+ActiveRecord::Schema.define(version: 20141010064504) do
 
   create_table "users", force: true do |t|
-    t.string   "phone",      null: false
-    t.integer  "pin",        null: false
+    t.string   "phone",                         null: false
+    t.integer  "pin",                           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "authenticated", default: false, null: false
   end
 
+  add_index "users", ["authenticated"], name: "index_users_on_authenticated"
   add_index "users", ["phone"], name: "index_users_on_phone", unique: true
 
 end
