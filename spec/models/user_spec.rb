@@ -28,17 +28,16 @@ describe User do
 
   describe 'contacts' do
     context 'with contacts' do
-      it 'include contact' do
-        expect(User.contacts([contact.phone])).to include(contact.phone)
-      end
+      it { expect(User.contacts([contact.phone])).to include(contact.phone) }
     end
 
     context 'without contacts' do
-      it 'does not include contact' do
-        phone = contact.phone
+      before do
+        @phone = contact.phone
         contact.destroy
-        expect(User.contacts([contact.phone])).not_to include(phone)
       end
+
+      it { expect(User.contacts([contact.phone])).not_to include(@phone) }
     end
   end
 end
