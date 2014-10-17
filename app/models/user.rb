@@ -8,9 +8,7 @@ class User < ActiveRecord::Base
 	scope :contacts, ->(phones) { where(phone: phones, authenticated: true).pluck(:phone) }
 
 	def self.create_new_pin
-		p = ""
-		6.times { p += Random.rand(9).to_s }
-		p.to_i
+		(1..6).map { Random.rand(9).to_s }.join("").to_i
 	end
 
 	def authenticate(pin)
