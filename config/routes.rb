@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       post 'signin', to: 'sessions#create'
 
       post 'users/contacts', to: 'users#contacts'
+
+      resources :messages, only: [:create]
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
 	before_create :set_default_values
 
-	scope :contacts, ->(phones) { where(phone: phones).pluck(:phone) }
+	scope :contacts, ->(phones) { where(phone: phones, authenticated: true).pluck(:phone) }
 
 	def self.create_new_pin
 		p = ""

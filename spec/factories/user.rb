@@ -5,6 +5,7 @@ FactoryGirl.define do
 
     factory :contact do
     	phone '+79030000000'
+    	authenticated true
     end
   end
 end

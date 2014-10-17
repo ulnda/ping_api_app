@@ -32,12 +32,19 @@ describe User do
     end
 
     context 'without contacts' do
-      before do
-        @phone = contact.phone
-        contact.destroy
+     let(:phone) { contact.phone }
+
+      context 'empty contacts' do
+        before { contact.destroy }
+
+        it { expect(User.contacts([phone])).not_to include(phone) }
       end
 
-      it { expect(User.contacts([contact.phone])).not_to include(@phone) }
+      context 'not activated contacts' do
+        before { contact.update(authenticated: false) }
+
+        it { expect(User.contacts([phone])).not_to include(phone) }
+      end
     end
   end
 end
